@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="800" height="600" viewBox="0 0 800 600" role="img" aria-label="Photo placeholder two">
+  <defs>
+    <linearGradient id="g2" x1="1" x2="0" y1="0" y2="1">
+      <stop offset="0%" stop-color="#fdba74" />
+      <stop offset="100%" stop-color="#fbcfe8" />
+    </linearGradient>
+  </defs>
+  <rect width="800" height="600" fill="url(#g2)" />
+  <text x="400" y="280" text-anchor="middle" font-family="Segoe UI, Arial" font-size="42" fill="#3f244d">Me + Katie</text>
+  <text x="400" y="340" text-anchor="middle" font-family="Segoe UI, Arial" font-size="26" fill="#3f244d">Favorite memory #2</text>
+</svg>
