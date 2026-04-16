@@ -353,7 +353,7 @@
 
   .nav-btn-overlay {
     position: absolute;
-    top: 50%;
+    top: 37%;
     transform: translateY(-50%);
     z-index: 2;
     box-shadow: 0 2px 10px rgba(0, 0, 0, 0.18);
@@ -412,7 +412,7 @@
   .critter-svg-wrap { width: 100%; max-width: 140px; margin: 0 auto 0.75rem; display: block; }
 
   .critter-label {
-    font-size: 15px;
+    font-size: 16px;
     color: #025742;
     font-weight: 500;
     width: 100%;
@@ -436,6 +436,6 @@
     margin-bottom: 0.25rem;
   }
   .footer-banner .small-text {
-    font-size: 16px;
+    font-size: 18px;
     color: #9d174d;
   }
