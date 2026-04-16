@@ -7,6 +7,7 @@
   * { box-sizing: border-box; }
 
   body {
+    font-family: "Trebuchet MS", "Comic Sans MS", "Segoe Print", cursive;
     margin: 0;
     min-height: 100vh;
     background: linear-gradient(135deg, #fce4ec, #e8f5e9, #e3f2fd);
@@ -73,7 +74,7 @@
   .section-title {
     font-size: 1.2rem;
     font-weight: 500;
-    color: var(--color-text-secondary);
+    color: #025742;
     letter-spacing: 0.06em;
     text-transform: uppercase;
     margin: 0 0 1.15rem;
@@ -81,13 +82,15 @@
 
   /* LETTER */
   .letter-card {
-    background: #fffdf4;
-    border: 1px solid #f0e6b0;
+    background: transparent;
+    border: none;
     border-radius: 16px;
-    padding: 2rem;
+    padding: 0;
     margin-bottom: 2rem;
     position: relative;
-    animation: pop 0.6s ease-out;
+    min-height: 280px;
+    perspective: 1100px;
+    transition: background 0.5s ease, border 0.5s ease, padding 0.5s ease;
   }
 
   .letter-card::before {
@@ -97,12 +100,100 @@
     height: 4px;
     background: repeating-linear-gradient(90deg, #f9a8d4 0px, #f9a8d4 12px, #86efac 12px, #86efac 24px, #93c5fd 24px, #93c5fd 36px);
     border-radius: 16px 16px 0 0;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+  }
+
+  .letter-card.is-open {
+    background: #fffdf4;
+    border: 1px solid #f0e6b0;
+    padding: 2rem;
+    animation: pop 0.5s ease-out;
+    min-height: 0;
+  }
+
+  .letter-card.is-open::before {
+    opacity: 1;
+  }
+
+  .envelope-shell {
+    position: absolute;
+    inset: 0;
+    border-radius: 16px;
+    overflow: hidden;
+    border: 1px solid #e7c89a;
+    box-shadow: 0 10px 26px rgba(0, 0, 0, 0.16);
+    transition: transform 0.55s ease, opacity 0.45s ease;
+  }
+
+  .envelope-back,
+  .envelope-flap,
+  .envelope-front {
+    position: absolute;
+    inset: 0;
+  }
+
+  .envelope-back {
+    background: linear-gradient(160deg, #fde4c0, #f7d5a6);
+  }
+
+  .envelope-flap {
+    height: 58%;
+    background: linear-gradient(170deg, #f8ddb8, #f2cfa0);
+    clip-path: polygon(0 0, 100% 0, 50% 86%);
+    transform-origin: top center;
+    transition: transform 0.7s cubic-bezier(0.2, 0.7, 0.2, 1);
+    z-index: 2;
+  }
+
+  .envelope-front {
+    top: auto;
+    height: 62%;
+    background: linear-gradient(170deg, #f6d7ae, #ecc18d);
+    clip-path: polygon(0 0, 50% 56%, 100% 0, 100% 100%, 0 100%);
+    z-index: 3;
+  }
+
+  .stamp-trigger {
+    position: absolute;
+    left: 50%;
+    top: 45%;
+    transform: translate(-50%, -50%);
+    z-index: 4;
+    cursor: pointer;
+    box-shadow: 0 4px 12px rgba(190, 24, 93, 0.22);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+  }
+
+  .stamp-trigger:hover {
+    transform: translate(-50%, -50%) scale(1.04);
+    box-shadow: 0 6px 16px rgba(190, 24, 93, 0.3);
+  }
+
+  .letter-card.is-open .stamp-trigger {
+    top: 1.5rem;
+    right: 1.5rem;
+    left: auto;
+    transform: none;
+    z-index: 5;
+  }
+
+  .letter-card.is-open .stamp-trigger:hover {
+    transform: scale(1.04);
+  }
+
+  .letter-card.is-open .envelope-shell {
+    opacity: 0;
+    transform: translateY(-20px) scale(0.95);
+    pointer-events: none;
+  }
+
+  .letter-card.is-open .envelope-flap {
+    transform: rotateX(-175deg);
   }
 
   .letter-stamp {
     position: absolute;
-    top: 1.5rem;
-    right: 1.5rem;
     width: 52px;
     height: 62px;
     background: #fce7f3;
@@ -114,6 +205,7 @@
     font-size: 24px;
     flex-direction: column;
     gap: 0;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
   }
 
   .letter-stamp span {
@@ -124,15 +216,40 @@
   }
 
   .letter-body {
+    position: absolute;
+    left: 6%;
+    right: 6%;
+    top: 24%;
+    background: #fffdf4;
+    border: 1px solid #f0e6b0;
+    border-radius: 14px;
+    padding: 2rem;
     font-size: 15px;
     line-height: 1.85;
     color: var(--color-text-primary);
     padding-right: 4rem;
+    max-height: 0;
+    overflow: hidden;
+    opacity: 0;
+    transform: translateY(24px) scale(0.96);
+    transition: transform 0.55s ease, opacity 0.45s ease, max-height 0.6s ease;
+    pointer-events: none;
   }
 
-  .letter-body p { margin: 0 0 0.85rem; }
-  .letter-body .salutation { font-size: 17px; font-weight: 500; color: #be185d; margin-bottom: 1rem; }
-  .letter-body .sign-off { font-size: 15px; color: var(--color-text-secondary); }
+  .letter-card.is-open .letter-body {
+    position: relative;
+    left: auto;
+    right: auto;
+    top: auto;
+    max-height: 2000px;
+    opacity: 1;
+    transform: translateY(0) scale(1);
+    pointer-events: auto;
+  }
+
+  .letter-body p { margin: 0 0 0.85rem; color: #9b134c; }
+  .letter-body .salutation { font-size: 16px; font-weight: 500; color: #9b134c; margin-bottom: 1rem; }
+  .letter-body .sign-off { font-size: 16px; color: #9b134c; }
 
   /* GALLERY */
   .gallery-wrap {
@@ -197,19 +314,21 @@
   }
 
   .photo-caption {
-    font-size: 14px;
+    font-size: 16px;
+    font-family: "Trebuchet MS", "Comic Sans MS", "Segoe Print", cursive;
     color: var(--color-text-secondary);
     text-align: center;
-    max-width: 360px;
-    line-height: 1.5;
+    width: 116%;
+    max-width: 460px;
+    line-height: 1.6;
   }
 
   .photo-caption strong {
     display: block;
-    font-size: 15px;
-    font-weight: 500;
+    font-size: 17px;
+    font-weight: 700;
     color: var(--color-text-primary);
-    margin-bottom: 2px;
+    margin-bottom: 4px;
   }
 
   .gallery-nav {
@@ -245,18 +364,29 @@
   .nav-btn-next { right: 10px; }
 
   .gallery-dots {
-    display: flex; gap: 6px;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 0.5rem 0.9rem;
+    border-radius: 14px;
+    background: rgba(248, 187, 208, 0.36);
+    border: 1px solid rgba(190, 24, 93, 0.16);
+    box-shadow: 0 4px 14px rgba(190, 24, 93, 0.12);
+    backdrop-filter: blur(5px);
+    -webkit-backdrop-filter: blur(5px);
   }
   .dot {
-    width: 8px; height: 8px;
+    width: 9px; height: 9px;
     border-radius: 50%;
-    background: var(--color-border-secondary);
+    background: rgba(190, 24, 93, 0.28);
+    border: 1px solid rgba(190, 24, 93, 0.45);
     cursor: pointer;
-    transition: background 0.2s, transform 0.2s;
+    transition: background 0.2s, transform 0.2s, border-color 0.2s;
   }
   .dot.active {
     background: #c2185b;
-    transform: scale(1.25);
+    border-color: #be185d;
+    transform: scale(1.2);
   }
 
   /* CRITTER SECTION */
@@ -282,9 +412,13 @@
   .critter-svg-wrap { width: 100%; max-width: 140px; margin: 0 auto 0.75rem; display: block; }
 
   .critter-label {
-    font-size: 13px;
-    color: var(--color-text-secondary);
-    font-weight: 400;
+    font-size: 15px;
+    color: #025742;
+    font-weight: 500;
+    width: 100%;
+    max-width: 140px;
+    margin: 0 auto;
+    line-height: 1.35;
   }
 
   /* FOOTER */
@@ -302,6 +436,6 @@
     margin-bottom: 0.25rem;
   }
   .footer-banner .small-text {
-    font-size: 15px;
+    font-size: 16px;
     color: #9d174d;
   }

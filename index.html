@@ -35,15 +35,30 @@
 
   <!-- LETTER -->
   <p class="section-title">A letter for you</p>
-  <div class="letter-card">
-    <div class="letter-stamp">🌸<span>BDAY</span><span>MAIL</span></div>
-    <div class="letter-body">
+  <div class="letter-card is-closed" id="letterCard">
+    <div class="envelope-shell" aria-hidden="true">
+      <div class="envelope-back"></div>
+      <div class="envelope-flap"></div>
+      <div class="envelope-front"></div>
+    </div>
+    <button class="letter-stamp stamp-trigger" id="openLetterBtn" type="button" aria-controls="letterBody" aria-expanded="false" aria-label="Open letter">
+      🌸<span id="letterActionTop">OPEN</span>
+    </button>
+    <div class="letter-body" id="letterBody">
       <p class="salutation">Dear Dr. Katie,</p>
-      <p>On this very special day, we just want to take a moment to celebrate the incredible person you are. Your warmth, brilliance, and the way you show up for the people around you make every day brighter.</p>
-      <p>Whether you're conquering difficult problems, making everyone laugh, or just being your wonderful self — you inspire us more than you know.</p>
-      <p>We hope this birthday brings you everything you deserve: great food, great company, maybe a llama sighting or two, and definitely some lobster.</p>
-      <p>Here's to you, Dr. Katie. May this year be your best one yet — full of adventures, discoveries, and all the things that make your heart happy.</p>
-      <p class="sign-off">With so much love and admiration, <br>Your people 💕</p>
+      <p>Wishing you a very happy birthday! I know you like to keep it lowkey, so do not want to go overboard, but
+      through this letter, I just want to really thank you for your guidance, continued kindness, support, and the countless ways you've made a difference in my life.
+      <p>Earlier this year, when you helped me with Ski gear equipments - not only for me, but also my friends (when you realllly didn't have to), it might have not been a big deal to you, but it means so much to me and I am really grateful. 
+         Whether it's guidance in the project, poster or help with actviities out of the office, you've always been a guiding light. </p>
+      <p>You inspire me so much with all the work you've done and I really look upto you.
+      I also really enjoy catching up with you every week and am really really grateful and feel lucky and blessed to be able to work with you.</p>
+      <p> I hope you have a really great day, today and forever. 
+          I hope this birthday brings you everything you deserve: great food, great company, maybe a llama sighting or two, and definitely some lobster.
+      </p>
+      <p> Thank you again for everything you do. I am sure I speak on behalf of all of your students, you're the best!</p>
+    
+      <p></p>
+      <p class="sign-off">Best wishes, <br>Med</p>
     </div>
   </div>
 
@@ -125,7 +140,7 @@
             <img src="images/7.jpeg" alt="Memory 7">
           </div>
           <div class="photo-caption">
-            <strong>Just another day of me bothering you for the photo haha <br> (also I am very red for some reason) </strong>
+            <strong>Just another day of me bothering you for the photo haha (also I am very red for some reason) </strong>
             September 25, 2025 --- Oh, actually our first selfie together!
           </div>
         </div>
@@ -147,7 +162,7 @@
             <img src="images/9.jpeg" alt="Memory 9">
           </div>
           <div class="photo-caption">
-            <strong>Another with the pet!</strong>
+            <strong>Another one with the pet!</strong>
             February 10, 2026
           </div>
         </div>
@@ -170,7 +185,7 @@
     <!-- Llama 1 -->
     <div class="critter-card">
       <div class="critter-svg-wrap">
-        <svg viewBox="0 0 120 160" xmlns="http://www.w3.org/2000/svg">
+        <svg viewBox="-15 0 150 160" xmlns="http://www.w3.org/2000/svg">
           <g transform="translate(0,14)">
             <rect x="35" y="70" width="50" height="65" rx="10" fill="#f3e8ff"/>
             <rect x="45" y="30" width="28" height="50" rx="8" fill="#f3e8ff"/>
@@ -197,13 +212,13 @@
           <circle cx="59" cy="0" r="4" fill="#fde68a"/>
         </svg>
       </div>
-      <div class="critter-label">Party llama says happy birthday!</div>
+      <div class="critter-label">Party llama says Happy Birthday!</div>
     </div>
 
     <!-- Lobster 1 -->
     <div class="critter-card" style="animation-delay:0.7s">
       <div class="critter-svg-wrap">
-        <svg viewBox="0 0 120 160" xmlns="http://www.w3.org/2000/svg">
+        <svg viewBox="-15 0 150 160" xmlns="http://www.w3.org/2000/svg">
           <!-- tail fan -->
           <ellipse cx="60" cy="148" rx="20" ry="10" fill="#fca5a5"/>
           <ellipse cx="42" cy="143" rx="14" ry="8" fill="#fca5a5" transform="rotate(-25,42,143)"/>
@@ -234,8 +249,9 @@
           <line x1="75" y1="110" x2="92" y2="128" stroke="#fca5a5" stroke-width="3" stroke-linecap="round"/>
           <line x1="82" y1="105" x2="100" y2="118" stroke="#fca5a5" stroke-width="3" stroke-linecap="round"/>
           <!-- bow tie -->
-          <polygon points="51,79 60,73 69,79 60,87" fill="#fde68a" stroke="#b45309" stroke-width="1.2" stroke-linejoin="round"/>
-          <circle cx="60" cy="80" r="2.4" fill="#b45309"/>
+          <polygon points="48,85 60,92 48,99" fill="#fde68a" stroke="#b45309" stroke-width="1.2" stroke-linejoin="round"/>
+          <polygon points="72,85 60,92 72,99" fill="#fde68a" stroke="#b45309" stroke-width="1.2" stroke-linejoin="round"/>
+          <circle cx="60" cy="92" r="2.4" fill="#b45309"/>
         </svg>
       </div>
       <div class="critter-label">A dapper lobster in a bow tie, just for you</div>
@@ -284,13 +300,13 @@
       <div class="critter-svg-wrap">
         <svg viewBox="0 0 120 160" xmlns="http://www.w3.org/2000/svg">
           <!-- balloon strings from claws -->
-          <line x1="22" y1="85" x2="22" y2="20" stroke="#c4b5fd" stroke-width="1.5" stroke-dasharray="3,2"/>
-          <line x1="98" y1="85" x2="98" y2="15" stroke="#fde68a" stroke-width="1.5" stroke-dasharray="3,2"/>
+          <line x1="26" y1="85" x2="26" y2="34" stroke="#c4b5fd" stroke-width="1.5" stroke-dasharray="3,2"/>
+          <line x1="94" y1="85" x2="94" y2="30" stroke="#fde68a" stroke-width="1.5" stroke-dasharray="3,2"/>
           <!-- balloons -->
-          <ellipse cx="22" cy="13" rx="13" ry="16" fill="#c4b5fd"/>
-          <path d="M19 27 Q22 32 25 27" fill="#a78bfa"/>
-          <ellipse cx="98" cy="8" rx="13" ry="16" fill="#fde68a"/>
-          <path d="M95 22 Q98 27 101 22" fill="#fbbf24"/>
+          <ellipse cx="26" cy="26" rx="13" ry="16" fill="#c4b5fd"/>
+          <path d="M23 40 Q26 45 29 40" fill="#a78bfa"/>
+          <ellipse cx="94" cy="22" rx="13" ry="16" fill="#fde68a"/>
+          <path d="M91 36 Q94 41 97 36" fill="#fbbf24"/>
           <!-- tail -->
           <ellipse cx="60" cy="148" rx="18" ry="10" fill="#fca5a5"/>
           <ellipse cx="42" cy="142" rx="13" ry="7" fill="#fca5a5" transform="rotate(-25,42,142)"/>
@@ -313,10 +329,10 @@
           <line x1="52" y1="58" x2="30" y2="35" stroke="#ef4444" stroke-width="2" stroke-linecap="round"/>
           <line x1="68" y1="58" x2="90" y2="35" stroke="#ef4444" stroke-width="2" stroke-linecap="round"/>
           <!-- claws holding balloon strings -->
-          <rect x="8" y="80" width="28" height="18" rx="9" fill="#ef4444"/>
-          <ellipse cx="6" cy="89" rx="12" ry="9" fill="#dc2626"/>
-          <rect x="84" y="80" width="28" height="18" rx="9" fill="#ef4444"/>
-          <ellipse cx="114" cy="89" rx="12" ry="9" fill="#dc2626"/>
+          <rect x="14" y="80" width="24" height="18" rx="9" fill="#ef4444"/>
+          <ellipse cx="14" cy="89" rx="10" ry="8" fill="#dc2626"/>
+          <rect x="80" y="80" width="24" height="18" rx="9" fill="#ef4444"/>
+          <ellipse cx="106" cy="89" rx="10" ry="8" fill="#dc2626"/>
           <!-- legs -->
           <line x1="45" y1="108" x2="28" y2="126" stroke="#fca5a5" stroke-width="3" stroke-linecap="round"/>
           <line x1="75" y1="108" x2="92" y2="126" stroke="#fca5a5" stroke-width="3" stroke-linecap="round"/>
@@ -329,8 +345,8 @@
 
   <!-- FOOTER -->
   <div class="footer-banner">
-    <div class="big-text">🦙 Happy Birthday, Dr. Katie! 🦞</div>
-    <div class="small-text">Today is all about you — celebrate big, laugh loud, and eat the lobster.</div>
+    <!-- <div class="big-text">🦙 Happy Birthday Again!!! 🦞 May this year be your best one yet — full of adventures, discoveries, and all the things that make your heart happy.</div> -->
+    <div class="small-text">May this year be your best one yet — full of adventures, discoveries, and all the things that make your heart happy.</div>
   </div>
 
 </div>
@@ -339,6 +355,9 @@
   const track = document.getElementById('track');
   const dotsContainer = document.getElementById('dots');
   const slides = track.querySelectorAll('.gallery-slide');
+  const letterCard = document.getElementById('letterCard');
+  const openLetterBtn = document.getElementById('openLetterBtn');
+  const letterActionTop = document.getElementById('letterActionTop');
   let current = 0;
 
   slides.forEach((_, i) => {
@@ -356,4 +375,20 @@
 
   document.getElementById('prevBtn').onclick = () => goTo(current - 1);
   document.getElementById('nextBtn').onclick = () => goTo(current + 1);
+
+  if (letterCard && openLetterBtn && letterActionTop) {
+    function setLetterOpen(isOpen) {
+      letterCard.classList.toggle('is-open', isOpen);
+      letterCard.classList.toggle('is-closed', !isOpen);
+      openLetterBtn.setAttribute('aria-expanded', String(isOpen));
+      openLetterBtn.setAttribute('aria-label', isOpen ? 'Close letter' : 'Open letter');
+      letterActionTop.textContent = isOpen ? 'CLOSE' : 'OPEN';
+    }
+
+    openLetterBtn.addEventListener('click', () => {
+      const isOpen = letterCard.classList.contains('is-open');
+      setLetterOpen(!isOpen);
+      openLetterBtn.blur();
+    });
+  }
 </script>
